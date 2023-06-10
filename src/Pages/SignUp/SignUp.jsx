@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const SignUp = () => {
   const {
@@ -10,6 +11,8 @@ const SignUp = () => {
     watch,
     formState: { errors },
   } = useForm();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const { createUser } = useContext(AuthContext);
 
@@ -20,6 +23,11 @@ const SignUp = () => {
       console.log(loggedUser);
     });
   };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   const password = watch("password");
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -86,7 +94,7 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 {...register("password", {
                   required: true,
@@ -95,8 +103,17 @@ const SignUp = () => {
                   pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                 })}
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered relative"
               />
+
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="password-toggle absolute right-10 transform translate-y-12 mt-1"
+              >
+                {showPassword ? <FiEyeOff /> : <FiEye />}
+              </button>
+
               {errors.password?.type === "required" && (
                 <span className="text-red-600 mt-2 text-xs">
                   Password is required
@@ -146,7 +163,6 @@ const SignUp = () => {
                 </span>
               )}
             </div>
-
             <div className="form-control mt-6">
               <input
                 className="btn btn-primary"
