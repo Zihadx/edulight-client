@@ -30,7 +30,7 @@ const NavBar = () => {
               <div className="w-10 rounded-full">
                 <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                 {/* {user?.photoURL ? (
-                  <img src="../../../assets/profie-avater/avatar.png" />
+                  <img src="../../../assets/profile-avatar/avatar.png" />
                 ) : (
                   <>
                     <img src={user?.photoURL} />

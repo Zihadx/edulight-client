@@ -7,6 +7,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -19,6 +20,7 @@ const SignUp = () => {
       console.log(loggedUser);
     });
   };
+  const password = watch("password");
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
@@ -122,6 +124,29 @@ const SignUp = () => {
                 </a>
               </label>
             </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Confirm Password</span>
+              </label>
+              <input
+                type="password"
+                name="confirmPassword"
+                {...register("confirmPassword", {
+                  required: true,
+                  validate: (value) =>
+                    value === password || "Passwords do not match",
+                })}
+                placeholder="confirm password"
+                className="input input-bordered"
+              />
+              {errors.confirmPassword && (
+                <span className="text-red-600 mt-2 text-xs">
+                  Password not match
+                </span>
+              )}
+            </div>
+
             <div className="form-control mt-6">
               <input
                 className="btn btn-primary"
