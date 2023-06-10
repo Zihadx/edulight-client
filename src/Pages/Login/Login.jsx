@@ -25,21 +25,7 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                {...register("name", { required: true })}
-                placeholder="name"
-                className="input input-bordered"
-              />
-              {errors.name && (
-                <span className="text-red-600 mt-2">Name is required</span>
-              )}
-            </div>
+           
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>

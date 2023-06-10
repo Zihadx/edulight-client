@@ -31,7 +31,9 @@ const SignUp = () => {
                 className="input input-bordered"
               />
               {errors.name && (
-                <span className="text-red-600 mt-2">Name is required</span>
+                <span className="text-red-600 mt-2 text-xs">
+                  Name is required
+                </span>
               )}
             </div>
             <div className="form-control">
@@ -46,9 +48,29 @@ const SignUp = () => {
                 className="input input-bordered"
               />
               {errors.email && (
-                <span className="text-red-600 mt-2">Email is required</span>
+                <span className="text-red-600 mt-2 text-xs">
+                  Email is required
+                </span>
               )}
             </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="text"
+                {...register("photoURL", { required: true })}
+                placeholder="photo URL"
+                className="input input-bordered"
+              />
+              {errors.photoURL && (
+                <span className="text-red-600 mt-2 text-xs">
+                  Photo URL is required
+                </span>
+              )}
+            </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
@@ -56,12 +78,35 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                {...register("password", { required: true })}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
                 placeholder="password"
                 className="input input-bordered"
               />
-              {errors.password && (
-                <span className="text-red-600 mt-2">Password is required</span>
+              {errors.password?.type === "required" && (
+                <span className="text-red-600 mt-2 text-xs">
+                  Password is required
+                </span>
+              )}
+              {errors.password?.type === "minLength" && (
+                <span className="text-red-600 mt-2 text-xs">
+                  Password must be 6 characters
+                </span>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <span className="text-red-600 mt-2 text-xs">
+                  Password must be less than 20 characters
+                </span>
+              )}
+              {errors.password?.type === "pattern" && (
+                <span className="text-red-600 mt-2 text-xs">
+                  Password must have one uppercase,lowercase,number and one
+                  special character
+                </span>
               )}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
@@ -70,14 +115,18 @@ const SignUp = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-primary" type="submit" value="Sign up" />
+              <input
+                className="btn btn-primary"
+                type="submit"
+                value="Sign up"
+              />
             </div>
           </form>
           <p className="text-center mb-4">
             <small>
-              Already have an account? 
+              Already have an account?
               <Link to="/login" className="link link-primary">
-                 Login 
+                Login
               </Link>
             </small>
           </p>
