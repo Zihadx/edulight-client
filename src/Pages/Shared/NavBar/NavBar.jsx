@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar fixed z-10 max-w-screen-xl bg-black bg-opacity-50 text-white">
         <div className="flex-1">
           <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
         </div>
@@ -21,7 +23,7 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-black bg-opacity-50 rounded-box w-52 font-bold"
             >
               <li>
                 <a className="justify-between">
@@ -34,6 +36,9 @@ const NavBar = () => {
               </li>
               <li>
                 <a>Logout</a>
+              </li>
+              <li>
+                <Link to='/login'>Login</Link>
               </li>
             </ul>
           </div>
