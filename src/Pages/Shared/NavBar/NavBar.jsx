@@ -1,6 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <div className="navbar fixed z-10 max-w-screen-xl bg-black bg-opacity-50 text-white">
@@ -19,6 +29,13 @@ const NavBar = () => {
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                {/* {user?.photoURL ? (
+                  <img src="../../../assets/profie-avater/avatar.png" />
+                ) : (
+                  <>
+                    <img src={user?.photoURL} />
+                  </>
+                )} */}
               </div>
             </label>
             <ul
@@ -34,12 +51,20 @@ const NavBar = () => {
               <li>
                 <a>Settings</a>
               </li>
-              <li>
-                <a>Logout</a>
-              </li>
-              <li>
-                <Link to='/login'>Login</Link>
-              </li>
+
+              {user ? (
+                <>
+                  <li>
+                    <a onClick={handleLogOut}>Log out</a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

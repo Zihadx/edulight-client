@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -15,6 +16,13 @@ const Login = () => {
     signIn(data.email, data.password).then((result) => {
       const user = result.user;
       console.log(user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User Login Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
   };
   return (
