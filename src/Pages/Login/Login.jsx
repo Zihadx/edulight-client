@@ -1,16 +1,25 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+
+  const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   const onSubmit = (data) => {
     console.log(data);
     signIn(data.email, data.password).then((result) => {
@@ -33,10 +42,9 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-           
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text font-semibold">Email</span>
               </label>
               <input
                 type="email"
@@ -46,22 +54,29 @@ const Login = () => {
                 className="input input-bordered"
               />
               {errors.email && (
-                <span className="text-red-600 mt-2">Email is required</span>
+                <small className="text-red-600 mt-2">Email is required</small>
               )}
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text font-semibold">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 {...register("password", { required: true })}
                 placeholder="password"
                 className="input input-bordered"
               />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="password-toggle absolute right-10 transform translate-y-12 mt-1"
+              >
+                {showPassword ? <FiEyeOff /> : <FiEye />}
+              </button>
               {errors.password && (
-                <span className="text-red-600 mt-2">Password is required</span>
+                <small className="text-red-600 mt-2">Password is required</small>
               )}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
@@ -70,11 +85,7 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <input
-                className="btn btn-primary"
-                type="submit"
-                value="Login"
-              />
+              <input className="btn btn-primary" type="submit" value="Login" />
             </div>
           </form>
           <p className="text-center mb-4">

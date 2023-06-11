@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const {
@@ -21,6 +22,13 @@ const SignUp = () => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User Sign up Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
   };
 
@@ -35,11 +43,11 @@ const SignUp = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Sign up!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 w-full shadow-xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Name</span>
+                <span className="label-text font-semibold">Name</span>
               </label>
               <input
                 type="text"
@@ -56,7 +64,7 @@ const SignUp = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text font-semibold">Email</span>
               </label>
               <input
                 type="email"
@@ -74,7 +82,7 @@ const SignUp = () => {
 
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Photo URL</span>
+                <span className="label-text font-semibold">Photo URL</span>
               </label>
               <input
                 type="text"
@@ -91,7 +99,7 @@ const SignUp = () => {
 
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text font-semibold">Password</span>
               </label>
               <input
                 type={showPassword ? "text" : "password"}
@@ -144,7 +152,7 @@ const SignUp = () => {
 
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Confirm Password</span>
+                <span className="label-text font-semibold">Confirm Password</span>
               </label>
               <input
                 type="password"
