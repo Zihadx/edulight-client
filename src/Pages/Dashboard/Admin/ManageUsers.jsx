@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
@@ -32,6 +33,28 @@ const ManageUsers = () => {
         }
       });
   };
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch;
+          setDisabled(false);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is instructor now`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          setDisabled(true);
+        }
+      });
+  };
 
   return (
     <div className="w-full mx-auto">
@@ -58,15 +81,17 @@ const ManageUsers = () => {
                 <th>{index}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+                
                 <td>
-                 
                   <button
-                    //   onClick={() => handleMakeAdmin(user)}
+                      onClick={() => handleMakeInstructor(user)}
                     className="btn btn-sm btn-ghost bg-purple-900 text-xs text-white hover:text-slate-900"
+                    disabled={user.role === "instructor"}
                   >
                     Instructor
                   </button>
                 </td>
+                
                 <td>
                   <button
                     onClick={() => handleMakeAdmin(user)}
