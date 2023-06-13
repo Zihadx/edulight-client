@@ -27,7 +27,7 @@ const NavBar = () => {
         <Link to="/classes">Classes</Link>
       </li>
       <li>
-        <Link to="/">Classes {selectedClass?.length || 0}</Link>
+        <Link to="/dashboard">Classes {selectedClass?.length || 0}</Link>
       </li>
       {/* <li>
         <Link to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</Link>
