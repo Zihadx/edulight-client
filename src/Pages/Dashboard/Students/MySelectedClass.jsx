@@ -40,7 +40,7 @@ const MySelectedClass = () => {
       <Helmet>
         <title>Bistro Boss | Selected classes</title>
       </Helmet>
-      <div className="uppercase  h-[80px] font-semibold md:flex items-center justify-between gap-8 mb-8">
+      <div className="uppercase  h-[80px] font-semibold md:flex items-center justify-between gap-8 mb-8 mt-4 text-center">
         <h3 className="text-3xl">
           My selected classes: {selectedClass.length}
         </h3>
@@ -52,7 +52,7 @@ const MySelectedClass = () => {
         </Link>
       </div>
       <div className="overflow-x-auto">
-        <table className="table w-full bg-slate-50 text-center">
+        <table className="table w-full bg-purple-50 text-center mt-8">
           {/* <!-- head --> */}
           <thead>
             <tr>
