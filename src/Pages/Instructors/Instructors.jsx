@@ -6,7 +6,7 @@ import InstructorsCard from "./InstructorsCard";
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
   useEffect(() => {
-    fetch("class.json")
+    fetch("http://localhost:5000/instrucClasses")
       .then((res) => res.json())
       .then((data) => setInstructors(data));
   }, []);

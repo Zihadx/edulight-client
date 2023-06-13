@@ -5,7 +5,7 @@ import ClassesCard from "./ClassesCard";
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
-    fetch("class.json")
+    fetch("http://localhost:5000/instrucClasses")
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, []);
