@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -197,13 +198,14 @@ const SignUp = () => {
             </div>
             <div className="form-control mt-6">
               <input
-                className="btn btn-primary"
+                className="btn btn-ghost bg-purple-900 text-white hover:text-slate-900"
                 type="submit"
                 value="Sign up"
               />
             </div>
           </form>
-          <p className="text-center mb-4">
+          <SocialLogin></SocialLogin>
+          <p className="text-center mb-6 mt-4">
             <small>
               Already have an account?
               <Link to="/login" className="link link-primary">

@@ -98,7 +98,7 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-ghost bg-purple-900 text-white hover:text-slate-900"
                   type="submit"
                   value="Login"
                 />
