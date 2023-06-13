@@ -2,8 +2,8 @@
   {
     "instructorImage": "https://i.ibb.co/rwznVx0/pexels-sewupari-studio-11719267.jpg",
     "email": "jerry@example.com",
-    "classImage": "https://i.ibb.co/yVBMsLS/pexels-tima-miroshnichenko-5428267.jpg",
-    "className": "Learn Spanish",
+    "classesImage": "https://i.ibb.co/yVBMsLS/pexels-tima-miroshnichenko-5428267.jpg",
+    "classesName": "Learn Spanish",
     "instructorName": "Jerry",
     "availableSeats": 15,
     "price": 99.99
@@ -11,8 +11,8 @@
   {
     "instructorImage": "https://i.ibb.co/zfZdNCT/pexels-max-fischer-5212682.jpg",
     "email": "emily@example.com",
-    "classImage": "https://i.ibb.co/tH9Ss3Q/pexels-max-fischer-5212703.jpg",
-    "className": "Intermediate German",
+    "classesImage": "https://i.ibb.co/tH9Ss3Q/pexels-max-fischer-5212703.jpg",
+    "classesName": "Intermediate German",
     "instructorName": "Emily",
     "availableSeats": 10,
     "price": 149.99
@@ -20,8 +20,8 @@
   {
     "instructorImage": "https://i.ibb.co/zfZdNCT/pexels-max-fischer-5212682.jpg",
     "email": "emily@example.com",
-    "classImage": "https://i.ibb.co/tH9Ss3Q/pexels-max-fischer-5212703.jpg",
-    "className": "Advanced German",
+    "classesImage": "https://i.ibb.co/tH9Ss3Q/pexels-max-fischer-5212703.jpg",
+    "classesName": "Advanced German",
     "instructorName": "Emily",
     "availableSeats": 8,
     "price": 199.99
@@ -29,8 +29,8 @@
   {
     "instructorImage": "https://i.ibb.co/qFtCn3N/pexels-andrea-piacquadio-837140.jpg",
     "email": "nur@example.com",
-    "classImage": "https://i.ibb.co/VjyB92J/priscilla-du-preez-Xk-KCui44i-M0-unsplash.jpg",
-    "className": "English",
+    "classesImage": "https://i.ibb.co/VjyB92J/priscilla-du-preez-Xk-KCui44i-M0-unsplash.jpg",
+    "classesName": "English",
     "instructorName": "Nur",
     "availableSeats": 12,
     "price": 129.99
@@ -38,8 +38,8 @@
   {
     "instructorImage": "https://i.ibb.co/qFtCn3N/pexels-andrea-piacquadio-837140.jpg",
     "email": "nur@example.com",
-    "classImage": "https://i.ibb.co/VjyB92J/priscilla-du-preez-Xk-KCui44i-M0-unsplash.jpg",
-    "className": "Conversational English",
+    "classesImage": "https://i.ibb.co/VjyB92J/priscilla-du-preez-Xk-KCui44i-M0-unsplash.jpg",
+    "classesName": "Conversational English",
     "instructorName": "Nur",
     "availableSeats": 20,
     "price": 89.99
@@ -47,8 +47,8 @@
   {
     "instructorImage": "https://i.ibb.co/mzchmsM/pexels-craig-mckay-842944.jpg",
     "email": "afnan@example.com",
-    "classImage": "https://i.ibb.co/NLDr0TZ/ivan-aleksic-PDRFee-Dni-Ck-unsplash.jpg",
-    "className": "Learn Korean",
+    "classesImage": "https://i.ibb.co/jH8kQdM/jason-goodman-Oalh2-Moj-Uuk-unsplash.jpg",
+    "classesName": "Learn Korean",
     "instructorName": "Afnan",
     "availableSeats": 6,
     "price": 179.99
@@ -56,8 +56,8 @@
   {
     "instructorImage": "https://i.ibb.co/s2JSfW7/pexels-diva-plavalaguna-6937753.jpg",
     "email": "sarah@example.com",
-    "classImage": "https://i.ibb.co/NLDr0TZ/ivan-aleksic-PDRFee-Dni-Ck-unsplash.jpg",
-    "className": "Learn Arabic",
+    "classesImage": "https://i.ibb.co/NLDr0TZ/ivan-aleksic-PDRFee-Dni-Ck-unsplash.jpg",
+    "classesName": "Learn Arabic",
     "instructorName": "Sarah",
     "availableSeats": 18,
     "price": 109.99
@@ -65,8 +65,8 @@
   {
     "instructorImage": "https://i.ibb.co/s2JSfW7/pexels-diva-plavalaguna-6937753.jpg",
     "email": "sarah@example.com",
-    "classImage": "https://i.ibb.co/NLDr0TZ/ivan-aleksic-PDRFee-Dni-Ck-unsplash.jpg",
-    "className": "Learn Arabic",
+    "classesImage": "https://i.ibb.co/NLDr0TZ/ivan-aleksic-PDRFee-Dni-Ck-unsplash.jpg",
+    "classesName": "Learn Arabic",
     "instructorName": "Sarah",
     "availableSeats": 14,
     "price": 139.99
