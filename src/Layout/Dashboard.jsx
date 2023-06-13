@@ -27,7 +27,9 @@ const Dashboard = () => {
               className="rounded-full w-24 h-24"
               src={user && user.photoURL ? user.photoURL : avatar}
             />
-            <h3 className="font-bold text-2xl text-purple-800 uppercase">{user?.displayName}</h3>
+            <h3 className="font-bold text-2xl text-purple-800 uppercase">
+              {user?.displayName}
+            </h3>
           </div>
           <ul className="font-semibold text-black mt-8">
             {/* Sidebar content here */}
@@ -60,6 +62,17 @@ const Dashboard = () => {
               </NavLink>
             </li> */}
             </>
+            <div className="divider"></div>
+            <li>
+              <NavLink to="/">
+                <FaHome></FaHome>Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/classes">
+                <FaSchool></FaSchool>Classes
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
