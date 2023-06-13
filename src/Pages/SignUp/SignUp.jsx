@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import Swal from "sweetalert2";
@@ -10,25 +10,33 @@ const SignUp = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "User Sign up Successful",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User Sign up Successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
+        })
+        .catch((err) => console.log(err));
     });
   };
 
@@ -152,7 +160,9 @@ const SignUp = () => {
 
             <div className="form-control">
               <label className="label">
-                <span className="label-text font-semibold">Confirm Password</span>
+                <span className="label-text font-semibold">
+                  Confirm Password
+                </span>
               </label>
               <input
                 type="password"
