@@ -1,13 +1,24 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBars, FaBookOpen, FaHome, FaSchool, FaUsers, FaWallet } from "react-icons/fa";
+import {
+  FaBars,
+  FaBookOpen,
+  FaHome,
+  FaSchool,
+  FaUsers,
+  FaWallet,
+} from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import avatar from "../assets/profile-avatar/avatar.png";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const isStudent = !isAdmin;
+  const isInstructor = !isAdmin;
 
-  const isAdmin = true;
+  // const isAdmin = true;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -40,7 +51,7 @@ const Dashboard = () => {
           <ul className="font-semibold text-black mt-8">
             {/* Sidebar content here */}
 
-            {isAdmin ? (
+            {isAdmin && (
               <>
                 <li>
                   <NavLink to="/">
@@ -58,7 +69,9 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            ) : (
+            )}
+
+            {isStudent && (
               <>
                 <li>
                   <NavLink to="/">
@@ -79,6 +92,25 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="/dashboard/history">
                     <FaWallet></FaWallet>Payment history
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {isInstructor && (
+              <>
+                <li>
+                  <NavLink to="/">
+                    <FaHome></FaHome>Instructor Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/addClass">
+                    <FaSchool></FaSchool>Add a class
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/myClass">
+                    <FaBookOpen></FaBookOpen>My class
                   </NavLink>
                 </li>
               </>

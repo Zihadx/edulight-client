@@ -81,9 +81,11 @@ const MySelectedClass = () => {
                 <td>{classes.classesName}</td>
                 <td>{classes.price}</td>
                 <td>
-                  <button className="btn btn-sm btn-ghost bg-purple-900 text-white hover:text-slate-900">
-                    Pay
-                  </button>
+                  <Link to='/dashboard/payment'>
+                    <button className="btn btn-sm btn-ghost bg-purple-900 text-white hover:text-slate-900">
+                      Pay
+                    </button>
+                  </Link>
                 </td>
                 <td>
                   <button

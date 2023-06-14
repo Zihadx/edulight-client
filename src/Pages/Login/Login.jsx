@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -104,7 +105,8 @@ const Login = () => {
                 />
               </div>
             </form>
-            <p className="text-center mb-4">
+            <SocialLogin></SocialLogin>
+            <p className="text-center mb-6 mt-4">
               <small>
                 New to here?
                 <Link to="/signUp" className="link link-primary">
