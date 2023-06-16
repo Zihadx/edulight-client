@@ -10,11 +10,11 @@ const PopularInstructors = () => {
   }, []);
   return (
     <div>
-      <div className="text-center mt-8">
+      <div className="text-center mt-12">
         <h3 className="text-5xl font-bold mb-4">Popular Instructors</h3>
         <div className="divider w-1/2 mx-auto"></div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 my-8">
         {popularInstructors.map((popularInstructor) => (
           <PopularInstructorCard
             key={popularInstructor._id}

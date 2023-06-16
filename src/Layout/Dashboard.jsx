@@ -11,12 +11,12 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import avatar from "../assets/profile-avatar/avatar.png";
 import useAdmin from "../Hooks/useAdmin";
+import useInstructor from "../Hooks/useInstructor";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-  const isInstructor = !isAdmin
-  const isStudent = !isAdmin && !isInstructor;
+  const [isInstructor] = useInstructor();
 
   // const isStudent = true;
 
@@ -52,7 +52,6 @@ const Dashboard = () => {
 
             {isAdmin ? (
               <>
-               
                 <li>
                   <NavLink to="/dashboard/manageClass">
                     <FaSchool></FaSchool>Manage Classes
@@ -64,11 +63,21 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            ):<></>}
-
-            {isStudent ? (
+            ) : isInstructor ? (
               <>
-                
+                <li>
+                  <NavLink to="/dashboard/addClass">
+                    <FaSchool></FaSchool>Add a class
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/myClass">
+                    <FaBookOpen></FaBookOpen>My class
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
                 <li>
                   <NavLink to="/dashboard/mySelectedClass">
                     <FaSchool></FaSchool>Selected Classes
@@ -81,27 +90,15 @@ const Dashboard = () => {
                 </li>
 
                 <li>
-                  <NavLink to="/dashboard/history">
+                  <NavLink to="/dashboard/paymentHistory">
                     <FaWallet></FaWallet>Payment history
                   </NavLink>
                 </li>
               </>
-            ):<></>}
-            {isInstructor ? (
-              <>
-                
-                <li>
-                  <NavLink to="/dashboard/addClass">
-                    <FaSchool></FaSchool>Add a class
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/myClass">
-                    <FaBookOpen></FaBookOpen>My class
-                  </NavLink>
-                </li>
-              </>
-            ):<></>}
+            )}
+
+            {/* {isStudent ? :<></>}
+            {} */}
 
             <div className="divider"></div>
             <li>

@@ -12,7 +12,6 @@ const ManageClasses = () => {
     ["manageClass"],
     async () => {
       const res = await axiosSecure.get("/manageClass");
-      console.log(res.data);
       return res.data;
     }
   );
@@ -25,12 +24,35 @@ const ManageClasses = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount) {
-          refetch;
+          refetch();
           setDisabled(false);
           Swal.fire({
             position: "top-end",
             icon: "success",
             title: `${classes.classesName} is  Approved`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          setDisabled(true);
+        }
+      });
+  };
+
+  const handleDenyClass = (classes) => {
+    fetch(`http://localhost:5000/manageClass/deny/${classes._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          setDisabled(false);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${classes.classesName} is  Deny`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -81,9 +103,9 @@ const ManageClasses = () => {
 
                 <td>
                   <button
-                    // onClick={() => handleMakeAdmin(user)}
+                    onClick={() => handleDenyClass(classes)}
                     className="btn btn-sm btn-ghost bg-purple-900 text-xs text-white hover:text-slate-900"
-                    // disabled={user.role === "admin"}
+                    disabled={classes.status === "deny"}
                   >
                     Deny
                   </button>

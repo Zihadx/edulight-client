@@ -45,11 +45,6 @@ const MySelectedClass = () => {
           My selected classes: {selectedClass.length}
         </h3>
         <h3 className="text-3xl my-4">Total Prices: ${total}</h3>
-        <Link to="/dashboard/payment">
-          <button className="btn btn-sm btn-ghost bg-purple-900 text-white hover:text-slate-900">
-            Pay
-          </button>
-        </Link>
       </div>
       <div className="overflow-x-auto">
         <table className="table w-full bg-purple-50 text-center mt-8">

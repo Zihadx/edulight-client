@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 
 const useInstructor = () => {
     const { user, loading } = useContext(AuthContext);
-    console.log(user);
     const [axiosSecure] = useAxiosSecure();
   
   
@@ -14,7 +13,7 @@ const useInstructor = () => {
       enabled: !loading,
       queryFn: async () => {
         const response = await axiosSecure.get(`/users/instructor/${user?.email}`);
-        return response.data.isInstructor;
+        return response.data.instructor;
       },
     });
     return [isInstructor, isInstructorLoading];

@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import avatar from "../../../assets/profile-avatar/avatar.png";
 import logo from "../../../assets/logo/logo.png";
-import useAdmin from "../../../Hooks/useAdmin";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [isAdmin] = useAdmin()
 
   const handleLogOut = () => {
     logOut()
@@ -27,7 +25,7 @@ const NavBar = () => {
         <Link to="/classes">Classes</Link>
       </li>
       <li>
-        <Link to={isAdmin ? '/dashboard/manageUsers' : '/dashboard/mySelectedClass'}>Dashboard</Link>
+        <Link to="dashboard">Dashboard</Link>
       </li>
     </>
   );
@@ -93,6 +91,7 @@ const NavBar = () => {
           <div className="w-12 rounded-full">
             <img
               className="rounded-full w-12 h-12"
+              title={user ? user.displayName : ""}
               src={user && user.photoURL ? user.photoURL : avatar}
             />
           </div>
