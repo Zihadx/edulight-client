@@ -1,5 +1,5 @@
 # EduLight
-live link: 
+live link: https://edu-light-7d327.web.app/
 
 ## feature
 - many many harder feature have this project, payment gateway, jwt,axios etc

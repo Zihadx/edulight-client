@@ -17,7 +17,7 @@ const ManageClasses = () => {
   );
 
   const handleApproveClass = (classes) => {
-    fetch(`http://localhost:5000/manageClass/approve/${classes._id}`, {
+    fetch(`https://edu-light-server.vercel.app/manageClass/approve/${classes._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -40,7 +40,7 @@ const ManageClasses = () => {
   };
 
   const handleDenyClass = (classes) => {
-    fetch(`http://localhost:5000/manageClass/deny/${classes._id}`, {
+    fetch(`https://edu-light-server.vercel.app/manageClass/deny/${classes._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

@@ -5,7 +5,7 @@ const EnrolledClass = () => {
   const [enrolledClasses, setEnrolledClasses] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/enrolledClass?email=${user?.email}`)
+    fetch(`https://edu-light-server.vercel.app/enrolledClass?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setEnrolledClasses(data));
   }, [user]);

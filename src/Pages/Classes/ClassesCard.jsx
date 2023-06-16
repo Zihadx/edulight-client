@@ -31,7 +31,7 @@ const ClassesCard = ({ allClass }) => {
         price,
         email: user.email,
       };
-      fetch("http://localhost:5000/selectedClass", {
+      fetch("https://edu-light-server.vercel.app/selectedClass", {
         method: "POST",
         headers: {
           "content-type": "application/json",
