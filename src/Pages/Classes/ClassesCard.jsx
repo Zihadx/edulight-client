@@ -20,7 +20,7 @@ const ClassesCard = ({ allClass }) => {
   const [, refetch] = useSelectedClass();
   const navigate = useNavigate();
   const location = useLocation();
-//   console.log(refetch)
+  //   console.log(refetch)
 
   const handleSelectedClass = (allClass) => {
     if (user && user.email) {
@@ -66,8 +66,13 @@ const ClassesCard = ({ allClass }) => {
       });
     }
   };
+  // card bg-base-100 shadow-xl  mt-8
   return (
-    <div className="card bg-base-100 shadow-xl  mt-8">
+    <div
+      className={`card bg-base-100 shadow-xl mt-8 ${
+        availableSeats === 0 ? "bg-red-600 text-gray-200" : ""
+      }`}
+    >
       <figure>
         <img src={classesImage} alt="Shoes" className="h-48 w-full" />
       </figure>
@@ -78,7 +83,10 @@ const ClassesCard = ({ allClass }) => {
         <div className="card-actions">
           <button
             onClick={() => handleSelectedClass(allClass)}
-            className="btn btn-ghost bg-purple-900 text-white hover:text-slate-900"
+            className={`btn btn-ghost bg-purple-900 text-white hover:text-slate-900 ${
+              availableSeats === 0 ? "opacity-70 cursor-not-allowed" : ""
+            }`}
+            disabled={availableSeats === 0}
           >
             Select
           </button>

@@ -27,7 +27,7 @@ const SignUp = () => {
       console.log(loggedUser);
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const storeUser = { name: data.name, email: data.email };
+          const storeUser = { name: data.name, email: data.email};
 
           fetch("http://localhost:5000/users", {
             method: "POST",

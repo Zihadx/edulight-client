@@ -11,15 +11,11 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import avatar from "../assets/profile-avatar/avatar.png";
 import useAdmin from "../Hooks/useAdmin";
-// import useInstructor from "../Hooks/useInstructor";
-// import useStudent from "../Hooks/useStudent";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-  // const [isInstructor] = useInstructor()
   const isInstructor = !isAdmin
-  // const [isStudent] = useStudent()
   const isStudent = !isAdmin && !isInstructor;
 
   // const isStudent = true;
@@ -28,7 +24,6 @@ const Dashboard = () => {
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content  flex flex-col items-center justify-center">
-        {/* Page content here */}
         <label
           htmlFor="my-drawer-2"
           className=" text-lg drawer-button lg:hidden mt-4 w-full ml-8"
@@ -57,13 +52,9 @@ const Dashboard = () => {
 
             {isAdmin ? (
               <>
+               
                 <li>
-                  <NavLink to="/">
-                    <FaHome></FaHome>Admin Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/manageClasses">
+                  <NavLink to="/dashboard/manageClass">
                     <FaSchool></FaSchool>Manage Classes
                   </NavLink>
                 </li>
@@ -77,11 +68,7 @@ const Dashboard = () => {
 
             {isStudent ? (
               <>
-                <li>
-                  <NavLink to="/">
-                    <FaHome></FaHome>Student Home
-                  </NavLink>
-                </li>
+                
                 <li>
                   <NavLink to="/dashboard/mySelectedClass">
                     <FaSchool></FaSchool>Selected Classes
@@ -102,11 +89,7 @@ const Dashboard = () => {
             ):<></>}
             {isInstructor ? (
               <>
-                <li>
-                  <NavLink to="/">
-                    <FaHome></FaHome>Instructor Home
-                  </NavLink>
-                </li>
+                
                 <li>
                   <NavLink to="/dashboard/addClass">
                     <FaSchool></FaSchool>Add a class

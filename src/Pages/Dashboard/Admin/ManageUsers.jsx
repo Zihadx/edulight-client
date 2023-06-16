@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageUsers = () => {
-    const [axiosSecure] = useAxiosSecure()
+  const [axiosSecure] = useAxiosSecure();
   const [disabled, setDisabled] = useState(true);
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
@@ -83,10 +83,10 @@ const ManageUsers = () => {
                 <th>{index}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                
+
                 <td>
                   <button
-                      onClick={() => handleMakeInstructor(user)}
+                    onClick={() => handleMakeInstructor(user)}
                     className="btn btn-sm btn-ghost bg-purple-900 text-xs text-white hover:text-slate-900"
                     disabled={user.role === "instructor"}
                   >

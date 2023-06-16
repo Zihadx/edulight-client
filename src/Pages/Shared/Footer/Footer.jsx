@@ -2,8 +2,9 @@ import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-slate-600 text-neutral-content mt-12 flex justify-between items-center">
+    <footer className="footer p-10 bg-slate-500 text-neutral-content mt-12 flex justify-between items-center">
       <div>
+        <h2 className="text-3xl font-bold text-purple-900">EduLight</h2>
         <h3 className="text-lg font-semibold mb-4">Join our community</h3>
         <div className="form-control">
           <div className="input-group">
@@ -36,7 +37,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center">
-        <h2 className="footer-title">Social</h2>
+        <h2 className="footer-title">Social Contact</h2>
         <div className="grid grid-flow-col gap-4 text-3xl">
           <a>
             <FaTwitter></FaTwitter>
