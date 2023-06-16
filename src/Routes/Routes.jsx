@@ -14,11 +14,14 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoutes from "./AdminRoutes";
 import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses";
 import Payments from "../Pages/Dashboard/Payment/Payments";
+import EnrolledClass from "../Pages/Dashboard/Students/EnrolledClass";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -55,8 +58,12 @@ export const router = createBrowserRouter([
         element: <MySelectedClass></MySelectedClass>,
       },
       {
-        path: 'payment',
-        element: <Payments></Payments>
+        path: "enrolClass",
+        element: <EnrolledClass></EnrolledClass>,
+      },
+      {
+        path: "payment/:id",
+        element: <Payments></Payments>,
       },
       {
         path: "manageUsers",

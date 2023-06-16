@@ -14,7 +14,7 @@ const Classes = () => {
       <Helmet>
         <title>EduLight | Classes</title>
       </Helmet> 
-      <div className="hero h-[600px] bg-image">
+      <div className="hero h-[600px] bg-img">
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content bg-purple-900 bg-opacity-40 px-8 py-4 md:px-20 md:py-10 mt-16 rounded-lg ">
           <div className="max-w-md">

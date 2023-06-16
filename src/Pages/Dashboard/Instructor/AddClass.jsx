@@ -1,49 +1,59 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProviders";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-const img_hosting_token = import.meta.env.VITE_IMAGE_TOKEN;
 const AddClass = () => {
   const { user } = useContext(AuthContext);
-  //   const {useAxiosSecure} =useAxiosSecure()
-  //   console.log(user);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-  const image_hosting_url = `https://api.imgbb.com/1/upload?key=YOUR_CLIENT_API_KEY${img_hosting_token}`;
-
-  const onSubmit = (data) => {
-    const formData = new FormData();
-
-    console.log(formData);
-    formData.append("image", data.image[0]);
-    fetch(image_hosting_url, {
-      method: "POST",
-      body: formData,
+  const handleAddClass = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const classesName = form.class.value;
+    const instructorName = form.instructor.value;
+    const classesImage = form.photo.value;
+    const instructorImage = form.photo1.value;
+    const email = form.email.value;
+    const availableSeats = form.seat.value;
+    const price = form.price.value;
+    const addNewClass ={
+      classesName,
+      instructorName,
+      classesImage,
+      instructorImage,
+      email,
+      availableSeats,
+      price
+    }
+    console.log(addNewClass)
+    fetch('http://localhost:5000/instrucClasses',{
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(addNewClass)
     })
-      .then((res) => res.json())
-      .then((imageRes) => {
-        console.log(imageRes);
-      });
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      if(data.insertedId){
+        Swal.fire({
+          title: 'Success!',
+          text: 'class added successfully',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+        
+      }
+    })
   };
-  console.log(errors);
-  console.log(image_hosting_url);
+
   return (
     <div className="w-full md:ps-4">
       <Helmet>
         <title> EduLight | Add Item</title>
       </Helmet>
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-slate-100 rounded-md p-8"
-      >
+      <form onSubmit={handleAddClass} className="bg-slate-100 rounded-md p-8">
         <div className="flex gap-6">
           <div className="form-control w-full">
             <label className="label">
@@ -51,8 +61,8 @@ const AddClass = () => {
             </label>
             <input
               type="text"
+              name="class"
               placeholder="class name"
-              {...register("className", { required: true, maxLength: 80 })}
               className="input input-bordered w-full"
             />
           </div>
@@ -62,9 +72,9 @@ const AddClass = () => {
             </label>
             <input
               type="text"
+              name="instructor"
               placeholder="instructor name"
               defaultValue={user?.displayName}
-              {...register("instructorName", { required: true, maxLength: 80 })}
               className="input input-bordered w-full"
             />
           </div>
@@ -75,9 +85,9 @@ const AddClass = () => {
           </label>
           <input
             type="text"
+            name="email"
             placeholder="instructor email"
             defaultValue={user?.email}
-            {...register("instructorEmail", { required: true, maxLength: 80 })}
             className="input input-bordered w-full"
           />
         </div>
@@ -88,8 +98,8 @@ const AddClass = () => {
             </label>
             <input
               type="text"
+              name="seat"
               placeholder="available seat"
-              {...register("availableSeat", { required: true, maxLength: 80 })}
               className="input input-bordered w-full"
             />
           </div>
@@ -99,36 +109,36 @@ const AddClass = () => {
               <span className="label-text font-semibold">Price*</span>
             </label>
             <input
-              {...register("price", { required: true })}
               type="price"
+              name="price"
               placeholder="Price"
               className="input input-bordered w-full"
             />
           </div>
         </div>
         <div className="md:flex gap-6 justify-between">
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Class Image*</span>
+              <span className="label-text font-semibold">Classes photoURL</span>
             </label>
             <input
-              {...register("image1", { required: true })}
-              type="file"
-              className="file-input file-input-bordered w-full max-w-xs"
+              type="text"
+              name="photo"
+              placeholder="photoUrl"
+              className="input input-bordered w-full"
             />
           </div>
-          {/* <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">
-                Instructor Image*
-              </span>
+              <span className="label-text font-semibold">Instructor photoURL</span>
             </label>
             <input
-              {...register("image2", { required: true })}
-              type="file"
-              className="file-input file-input-bordered w-full max-w-xs"
+              type="text"
+              name="photo1"
+              placeholder="photoUrl"
+              className="input input-bordered w-full"
             />
-          </div> */}
+          </div>
         </div>
         <input
           className="btn btn-ghost mt-4 bg-purple-900 text-white hover:text-slate-900"

@@ -11,14 +11,18 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import avatar from "../assets/profile-avatar/avatar.png";
 import useAdmin from "../Hooks/useAdmin";
+// import useInstructor from "../Hooks/useInstructor";
+// import useStudent from "../Hooks/useStudent";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-  const isStudent = !isAdmin;
-  const isInstructor = !isAdmin;
+  // const [isInstructor] = useInstructor()
+  const isInstructor = !isAdmin
+  // const [isStudent] = useStudent()
+  const isStudent = !isAdmin && !isInstructor;
 
-  // const isAdmin = true;
+  // const isStudent = true;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -51,7 +55,7 @@ const Dashboard = () => {
           <ul className="font-semibold text-black mt-8">
             {/* Sidebar content here */}
 
-            {isAdmin && (
+            {isAdmin ? (
               <>
                 <li>
                   <NavLink to="/">
@@ -69,9 +73,9 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            )}
+            ):<></>}
 
-            {isStudent && (
+            {isStudent ? (
               <>
                 <li>
                   <NavLink to="/">
@@ -84,7 +88,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/enrollClass">
+                  <NavLink to="/dashboard/enrolClass">
                     <FaBookOpen></FaBookOpen>Enrolled Classes
                   </NavLink>
                 </li>
@@ -95,8 +99,8 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            )}
-            {isInstructor && (
+            ):<></>}
+            {isInstructor ? (
               <>
                 <li>
                   <NavLink to="/">
@@ -114,7 +118,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            )}
+            ):<></>}
 
             <div className="divider"></div>
             <li>

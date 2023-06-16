@@ -1,8 +1,8 @@
 
-import image4 from "../../../assets/banner/banner33.jpg";
+import image1 from "../../../assets/banner/banner33.jpg";
 import image3 from "../../../assets/banner/banner44.jpg";
 import image2 from "../../../assets/banner/banner55.jpg";
-import image1 from "../../../assets/banner/banner1.jpg";
+import image4 from "../../../assets/banner/banner1.jpg";
 const Banner = () => {
   return (
     <div className="carousel w-full h-[400px] md:h-[740px]">

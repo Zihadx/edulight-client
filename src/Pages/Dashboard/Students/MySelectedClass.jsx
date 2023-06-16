@@ -38,7 +38,7 @@ const MySelectedClass = () => {
   return (
     <div className="w-full md:ps-16">
       <Helmet>
-        <title>Bistro Boss | Selected classes</title>
+        <title>EduLight | Selected classes</title>
       </Helmet>
       <div className="uppercase  h-[80px] font-semibold md:flex items-center justify-between gap-8 mb-8 mt-4 text-center">
         <h3 className="text-3xl">
@@ -81,7 +81,7 @@ const MySelectedClass = () => {
                 <td>{classes.classesName}</td>
                 <td>{classes.price}</td>
                 <td>
-                  <Link to='/dashboard/payment'>
+                  <Link to={`/dashboard/payment/${classes._id}`}>
                     <button className="btn btn-sm btn-ghost bg-purple-900 text-white hover:text-slate-900">
                       Pay
                     </button>

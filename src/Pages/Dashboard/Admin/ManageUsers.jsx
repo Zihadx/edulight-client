@@ -61,7 +61,7 @@ const ManageUsers = () => {
   return (
     <div className="w-full mx-auto">
       <Helmet>
-        <title>Bistro Boss | Manage Users</title>
+        <title>EduLight | Manage Users</title>
       </Helmet>
       <h3 className="text-3xl font-semibold my-4 text-center">Manage Users</h3>
 

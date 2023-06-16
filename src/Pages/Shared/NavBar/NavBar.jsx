@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import avatar from "../../../assets/profile-avatar/avatar.png";
 import logo from "../../../assets/logo/logo.png";
+import useAdmin from "../../../Hooks/useAdmin";
 // import useSelectedClass from "../../../Hooks/useSelectedClass";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   // const [selectedClass] = useSelectedClass()/
+  const [isAdmin] = useAdmin()
 
   const handleLogOut = () => {
     logOut()
@@ -27,11 +29,11 @@ const NavBar = () => {
         <Link to="/classes">Classes</Link>
       </li>
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        {/* <Link to="/dashboard">Dashboard</Link> */}
       </li>
-      {/* <li>
-        <Link to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</Link>
-      </li> */}
+      <li>
+        <Link to={isAdmin ? '/dashboard/manageUsers' : '/dashboard/mySelectedClass'}>Dashboard</Link>
+      </li>
     </>
   );
   return (
