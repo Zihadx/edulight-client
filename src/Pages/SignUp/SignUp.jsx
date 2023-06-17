@@ -28,7 +28,7 @@ const SignUp = () => {
         .then(() => {
           const storeUser = { name: data.name, email: data.email};
 
-          fetch("https://edu-light-server.vercel.app/users", {
+          fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

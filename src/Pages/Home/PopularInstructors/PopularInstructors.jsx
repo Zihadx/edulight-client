@@ -4,7 +4,7 @@ import PopularInstructorCard from "./PopularInstructorCard";
 const PopularInstructors = () => {
   const [popularInstructors, setPopularInstructors] = useState([]);
   useEffect(() => {
-    fetch("https://edu-light-server.vercel.app/instrucClasses")
+    fetch("http://localhost:5000/instrucClasses")
       .then((res) => res.json())
       .then((data) => setPopularInstructors(data.slice(0, 6)));
   }, []);

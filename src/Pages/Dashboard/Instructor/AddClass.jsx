@@ -24,7 +24,7 @@ const AddClass = () => {
       availableSeats,
       price
     }
-    fetch('https://edu-light-server.vercel.app/instrucClasses',{
+    fetch('http://localhost:5000/instrucClasses',{
       method: 'POST',
       headers: {
         'content-type': 'application/json'

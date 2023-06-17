@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
   useEffect(() => {
-    fetch("https://edu-light-server.vercel.app/instrucClasses")
+    fetch("http://localhost:5000/instrucClasses")
       .then((res) => res.json())
       .then((data) => setInstructors(data));
   }, []);

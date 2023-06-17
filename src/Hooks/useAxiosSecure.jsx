@@ -7,7 +7,7 @@ const useAxiosSecure = () => {
   const { logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const axiosSecure = axios.create({
-    baseURL: "https://edu-light-server.vercel.app",
+    baseURL: "http://localhost:5000",
   });
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {

@@ -56,7 +56,7 @@ const AuthProviders = ({ children }) => {
      
       if (currentUser) {
         axios
-          .post("https://edu-light-server.vercel.app/jwt", { email: currentUser.email })
+          .post("http://localhost:5000/jwt", { email: currentUser.email })
           .then((data) => {
             localStorage.setItem("access-token", data.data);
             setLoading(false);

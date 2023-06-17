@@ -17,7 +17,7 @@ const ManageClasses = () => {
   );
 
   const handleApproveClass = (classes) => {
-    fetch(`https://edu-light-server.vercel.app/manageClass/approve/${classes._id}`, {
+    fetch(`http://localhost:5000/manageClass/approve/${classes._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -40,7 +40,7 @@ const ManageClasses = () => {
   };
 
   const handleDenyClass = (classes) => {
-    fetch(`https://edu-light-server.vercel.app/manageClass/deny/${classes._id}`, {
+    fetch(`http://localhost:5000/manageClass/deny/${classes._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -62,6 +62,31 @@ const ManageClasses = () => {
       });
   };
 
+  const handleFeedback = (classes, feedback) => {
+    const form = classes.target;
+    fetch(`http://localhost:5000/manageClass/feedback/${classes._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ feedback }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Feedback submitted`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+  const [feedback, setFeedback] = useState("");
   return (
     <div className="w-full mx-auto">
       <Helmet>
@@ -111,10 +136,22 @@ const ManageClasses = () => {
                   </button>
                 </td>
                 <td>
-                  <textarea
-                    className="textarea border-2 border-opacity-50 border-purple-700"
-                    placeholder="Feedback"
-                  ></textarea>
+                  <form>
+                    <textarea
+                      className="textarea border-2 border-opacity-50 border-purple-700"
+                      placeholder="Feedback"
+                      value={feedback}
+                      onChange={(e) => setFeedback(e.target.value)}
+                    ></textarea>
+                  </form>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleFeedback(classes, feedback)}
+                    className="btn btn-sm btn-ghost bg-purple-900 text-xs text-white hover:text-slate-900"
+                  >
+                    Send
+                  </button>
                 </td>
               </tr>
             ))}
