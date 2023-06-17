@@ -141,7 +141,7 @@ const AddClass = () => {
         <input
           className="btn btn-ghost mt-4 bg-purple-900 text-white hover:text-slate-900"
           type="submit"
-          value="Add Item"
+          value="Add Class"
         />
       </form>
     </div>
