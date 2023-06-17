@@ -2,9 +2,15 @@ import image1 from "../../../assets/banner/banner33.jpg";
 import image3 from "../../../assets/banner/banner44.jpg";
 import image2 from "../../../assets/banner/banner55.jpg";
 import image4 from "../../../assets/banner/banner1.jpg";
+import { motion } from "framer-motion";
 const Banner = () => {
   return (
-    <div className="carousel w-full h-[400px] md:h-[740px]">
+    <motion.div
+      className="carousel w-full h-[400px] md:h-[740px]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div id="slide1" className="carousel-item relative w-full">
         <img src={image1} className="w-full h-full " />
         <div className="absolute flex items-center h-full left-0 right-5 top-0 bg-gradient-to-r from-[#1f001f] to-[rgba(21, 21, 21, 0)] bg-opacity-50">
@@ -144,7 +150,7 @@ const Banner = () => {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

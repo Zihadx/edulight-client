@@ -72,6 +72,7 @@ const ClassesCard = ({ allClass }) => {
       className={`card bg-base-100 shadow-xl mt-8 ${
         availableSeats === 0 ? "bg-red-600 text-gray-200" : ""
       }`}
+      
     >
       <figure>
         <img src={classesImage} alt="Shoes" className="h-48 w-full" />
@@ -80,6 +81,7 @@ const ClassesCard = ({ allClass }) => {
         <h2 className="card-title">Instructor: {allClass.instructorName}</h2>
         <h2 className="card-title">{allClass.classesName}</h2>
         <p>Price: ${price}</p>
+        <p>Available seats: {availableSeats}</p>
         <div className="card-actions">
           <button
             onClick={() => handleSelectedClass(allClass)}

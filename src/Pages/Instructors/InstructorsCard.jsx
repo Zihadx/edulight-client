@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line react/prop-types
+import { motion } from "framer-motion";
 const InstructorsCard = ({ instructor }) => {
   const { instructorName, instructorImage, email } = instructor;
 
   return (
-    <div className="card bg-base-100 border mt-8">
+    <div
+      
+    >
       <figure className="px-10 pt-10">
         <img
           src={instructorImage}

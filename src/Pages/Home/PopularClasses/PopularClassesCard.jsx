@@ -7,6 +7,7 @@ import useSelectedClass from "../../../Hooks/useSelectedClass";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAdmin from "../../../Hooks/useAdmin";
 import useInstructor from "../../../Hooks/useInstructor";
+import { motion } from "framer-motion";
 
 const PopularClassesCard = ({ popularClass }) => {
   const {
@@ -70,10 +71,12 @@ const PopularClassesCard = ({ popularClass }) => {
     }
   };
   return (
-    <div
+    <motion.div
       className={`card bg-base-100 shadow-xl  ${
         availableSeats === 0 ? "bg-red-600 text-gray-200" : ""
       }`}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 5 }}
     >
       <figure>
         <img src={classesImage} alt="Shoes" className="h-48 w-full" />
@@ -82,6 +85,7 @@ const PopularClassesCard = ({ popularClass }) => {
         <h2 className="card-title">Instructor: {instructorName}</h2>
         <h2 className="card-title">{classesName}</h2>
         <p>Price: ${price}</p>
+        <p>Available Seats: {availableSeats}</p>
         <div className="card-actions">
           <button
             onClick={() => handleSelectedClass(popularClass)}
@@ -96,7 +100,7 @@ const PopularClassesCard = ({ popularClass }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
