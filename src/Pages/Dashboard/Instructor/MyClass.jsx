@@ -5,6 +5,17 @@ import { Link } from "react-router-dom";
 
 const MyClass = () => {
   const [myClass] = useMyClasses();
+
+  const getStatusColor = (status) => {
+    if (status === "approve") {
+      return "text-green-500";
+    } else if (status === "deny") {
+      return "text-red-500";
+    } else {
+      return "text-purple-500";
+    }
+  };
+
   return (
     <div className="w-full md:ps-16">
       <Helmet>
@@ -22,7 +33,8 @@ const MyClass = () => {
               <th>Class Name</th>
               <th>Total enrolled</th>
               <th>Status</th>
-              <th>Action</th>
+              <th>Edit</th>
+              <th>Feedback</th>
             </tr>
           </thead>
           <tbody>
@@ -40,16 +52,19 @@ const MyClass = () => {
                   </div>
                 </td>
                 <td>{classes.classesName}</td>
-                <td>{myClass.length}</td>
+                <td>{classes.students}</td>
                 <td>
                   {/* classes.status */}
-                  <p className="text-green-500">approved</p>
+                  <p className={getStatusColor(classes.status)}>
+                    {classes.status ? classes.status : "pending"}
+                  </p>
                 </td>
                 <td>
                   <Link className="btn btn-ghost text-purple-500 btn-sm text-lg">
                     <FaEdit></FaEdit>
                   </Link>
                 </td>
+                <td className="w-[200px]">{classes.feedback ? classes.feedback : "Feedback not available right now"}</td>
               </tr>
             ))}
           </tbody>

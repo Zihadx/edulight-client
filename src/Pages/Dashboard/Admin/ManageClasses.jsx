@@ -113,7 +113,7 @@ const ManageClasses = () => {
                 <td>
                   <textarea
                     className="textarea border-2 border-opacity-50 border-purple-700"
-                    placeholder="Bio"
+                    placeholder="Feedback"
                   ></textarea>
                 </td>
               </tr>
