@@ -5,6 +5,8 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useSelectedClass from "../../Hooks/useSelectedClass";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 const ClassesCard = ({ allClass }) => {
   const {
@@ -20,6 +22,8 @@ const ClassesCard = ({ allClass }) => {
   const [, refetch] = useSelectedClass();
   const navigate = useNavigate();
   const location = useLocation();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   //   console.log(refetch)
 
   const handleSelectedClass = (allClass) => {
@@ -72,7 +76,6 @@ const ClassesCard = ({ allClass }) => {
       className={`card bg-base-100 shadow-xl mt-8 ${
         availableSeats === 0 ? "bg-red-600 text-gray-200" : ""
       }`}
-      
     >
       <figure>
         <img src={classesImage} alt="Shoes" className="h-48 w-full" />
@@ -86,9 +89,11 @@ const ClassesCard = ({ allClass }) => {
           <button
             onClick={() => handleSelectedClass(allClass)}
             className={`btn btn-ghost bg-purple-900 text-white hover:text-slate-900 ${
-              availableSeats === 0 ? "opacity-70 cursor-not-allowed" : ""
+              availableSeats === 0 || isAdmin || isInstructor
+                ? "opacity-70 cursor-not-allowed"
+                : ""
             }`}
-            disabled={availableSeats === 0}
+            disabled={availableSeats === 0 || isAdmin || isInstructor}
           >
             Select
           </button>
